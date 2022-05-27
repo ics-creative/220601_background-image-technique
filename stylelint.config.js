@@ -16,5 +16,9 @@ module.exports = {
       true,
       { ignoreAtRules: ["include", "mixin", "use", "forward"] },
     ],
+    "property-no-vendor-prefix": [
+      true,
+      { ignoreProperties: ["background-clip"] },
+    ],
   },
 };

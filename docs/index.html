@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Background-image Animations</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Zen+Antique&display=swap"
+      rel="stylesheet"
+    />
+    
+    <script async type="module" crossorigin src="/assets/index.21fa1444.js"></script>
+    <link rel="stylesheet" href="/assets/index.9c873578.css">
+  </head>
+  <body>
+    <div class="wrapper">
+      <section>
+        <h1>ホバーで色が横から変わるテキスト</h1>
+        <p class="slideColor">メロスは激怒した。</p>
+      </section>
+      <section>
+        <h1>スクロールを促す線の動き</h1>
+        <p class="scrollDownWrapper">
+          Scroll Down <span class="scrollDown scrollDownWrapper_line"></span>
+        </p>
+      </section>
+      <section>
+        <h1>ローディングバー</h1>
+        <div class="loadingBar"></div>
+        <p class="loadingText">Loading</p>
+      </section>
+      <section>
+        <h1>トグルボタン</h1>
+        <label class="toggleLabel"
+          ><input type="checkbox" class="toggleButton" />トグル</label
+        >
+      </section>
+      <section>
+        <h1>警告表示</h1>
+        <div class="warningWrapper">
+          <div class="warning"></div>
+          <p class="warningTextWrapper">
+            <span class="warningText">警告</span
+            ><span class="warningTextEn">Warning</span>
+          </p>
+          <div class="warning reverse"></div>
+        </div>
+      </section>
+      <section>
+        <h1>ターゲットに近づくと明滅が激しくなる</h1>
+        <div class="findSomething">
+          <div class="blinker" id="js-blinker"></div>
+          <div class="target" id="target">Target</div>
+        </div>
+      </section>
+      <section>
+        <h1>スケルトンスクリーン</h1>
+        <div class="dummyArticle">
+          <div class="dummyArticle_image">
+            <span class="skeletonElement"></span>
+          </div>
+          <div>
+            <div class="dummyArticle_title skeleton_title">
+              <span class="skeletonElement"></span>
+            </div>
+            <div class="dummyArticle_text skeleton_text">
+              <span class="skeletonElement"></span
+              ><span class="skeletonElement"></span
+              ><span class="skeletonElement"></span
+              ><span class="skeletonElement"></span>
+            </div>
+          </div>
+        </div>
+        <div class="dummyArticle">
+          <div class="dummyArticle_image">
+            <span class="skeletonElement"></span>
+          </div>
+          <div>
+            <div class="dummyArticle_title skeleton_title">
+              <span class="skeletonElement"></span>
+            </div>
+            <div class="dummyArticle_text skeleton_text">
+              <span class="skeletonElement"></span
+              ><span class="skeletonElement"></span
+              ><span class="skeletonElement"></span
+              ><span class="skeletonElement"></span>
+            </div>
+          </div>
+        </div>
+        <div class="dummyArticle">
+          <div class="dummyArticle_image">
+            <span class="skeletonElement"></span>
+          </div>
+          <div>
+            <div class="dummyArticle_title skeleton_title">
+              <span class="skeletonElement"></span>
+            </div>
+            <div class="dummyArticle_text skeleton_text">
+              <span class="skeletonElement"></span
+              ><span class="skeletonElement"></span
+              ><span class="skeletonElement"></span
+              ><span class="skeletonElement"></span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h1>雪降る背景</h1>
+        <div class="imageWrapper">
+          <img src="/assets/gokayama.e59bb16f.jpg" width="640" height="427" />
+          <div class="snowFalling"></div>
+        </div>
+
+        <small
+          >Photo by
+          <a
+            href="https://unsplash.com/@mysam123?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+            >Sam Lee</a
+          >
+          on
+          <a
+            href="https://unsplash.com/s/photos/gokayama?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+            >Unsplash</a
+          >
+        </small>
+      </section>
+    </div>
+    <script>
+      const TARGET_RADIUS = 50;
+      const targetElement = document.getElementById("target");
+      const blinkerElement = document.getElementById("js-blinker");
+      let d = 2000;
+      const getDistance = (x1, x2, y1, y2) => {
+        return Math.hypot(x1 - x2, y1 - y2);
+      };
+      document.addEventListener("mousemove", (event) => {
+        const elementXCenter =
+          targetElement.getBoundingClientRect().x + TARGET_RADIUS;
+        const elementYCenter =
+          targetElement.getBoundingClientRect().y + TARGET_RADIUS;
+
+        d = getDistance(
+          elementXCenter,
+          event.clientX,
+          elementYCenter,
+          event.clientY
+        );
+      });
+
+      blinkerElement.addEventListener("animationiteration", () => {
+        if (d < 100) {
+          blinkerElement.classList.add("near3");
+        } else if (d < 200) {
+          blinkerElement.classList.remove("near3");
+          blinkerElement.classList.add("near2");
+        } else if (d < 300) {
+          blinkerElement.classList.remove("near3");
+          blinkerElement.classList.remove("near2");
+          blinkerElement.classList.add("near1");
+        } else {
+          blinkerElement.classList.remove("near3");
+          blinkerElement.classList.remove("near2");
+          blinkerElement.classList.remove("near1");
+        }
+      });
+
+      // });
+      // if (d < 10){
+      //   console.log("10")
+      //   blinkerElement.style.animationDuration = "0.2s";
+      // }else if( d < 50){
+      //   blinkerElement.style.animationDuration = "0.5s";
+      // }
+      //
+      //   break;
+      // case:
+      //
+      //   break;
+      // case d < 100:
+      //   blinkerElement.style.animationDuration = "1s";
+      //   break;
+      // default:
+      //   blinkerElement.style.animationDuration = "2s";
+      //
+    </script>
+  </body>
+</html>

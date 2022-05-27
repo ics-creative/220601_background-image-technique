@@ -1,12 +1,12 @@
-const { resolve } = require("path");
-
 const { defineConfig } = require("vite");
 
 module.exports = defineConfig({
   build: {
-    outDir: "docs",
+    outDir: "../docs",
+    minify: false,
   },
   base: "/",
+  root: "src",
   server: {
     port: 3331,
   },
