@@ -5,7 +5,7 @@ module.exports = defineConfig({
     outDir: "../docs",
     minify: false,
   },
-  base: "/",
+  base: "/220601_background-image-technique",
   root: "src",
   server: {
     port: 3331,
