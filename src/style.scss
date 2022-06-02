@@ -37,7 +37,7 @@ body {
   -webkit-background-clip: text;
   background-clip: text;
   background-size: 200% 100%;
-  transition: background-position 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: background-position 0.4s cubic-bezier(0.25, 1, 0.5, 1); /* easeOutQuartのイージング */
 
   &:hover {
     background-position: 0 0;
@@ -60,7 +60,13 @@ body {
   background-size: 100% 200%;
   animation-name: scroll-down;
   animation-duration: 2s;
-  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  animation-timing-function: cubic-bezier(
+    0.22,
+    1,
+    0.36,
+    1
+  ); /* easeOutQuintのイージング */
+
   animation-delay: 0.7s;
   animation-iteration-count: infinite;
   animation-fill-mode: backwards;
@@ -108,7 +114,13 @@ body {
   box-shadow: 0 2px 1px rgba(0, 0, 0, 15%);
   animation-name: loading-bar;
   animation-duration: 1.4s;
-  animation-timing-function: cubic-bezier(0.83, 0, 0.17, 1);
+  animation-timing-function: cubic-bezier(
+    0.83,
+    0,
+    0.17,
+    1
+  ); /* easeInOutQuintのイージング */
+
   animation-iteration-count: infinite;
 }
 
@@ -149,7 +161,8 @@ body {
   border-radius: 12px;
   box-shadow: 0 0 3px rgba(0, 0, 0, 10%) inset;
   transition: background-position 0.4s cubic-bezier(0.65, 0, 0.35, 1),
-    background-color 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+    background-color 0.4s cubic-bezier(0.65, 0, 0.35, 1)
+      /* easeInOutCubicのイージング */;
   appearance: none;
 
   &:checked {
