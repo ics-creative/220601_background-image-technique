@@ -36,6 +36,7 @@ body {
   background-clip: text;
   background-size: 200% 100%;
   transition: background-position 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  /* easeOutQuartのイージング */
 }
 .slideColor:hover {
   background-position: 0 0;
@@ -52,6 +53,7 @@ body {
   animation-name: scroll-down;
   animation-duration: 2s;
   animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  /* easeOutQuintのイージング */
   animation-delay: 0.7s;
   animation-iteration-count: infinite;
   animation-fill-mode: backwards;
@@ -90,6 +92,7 @@ body {
   animation-name: loading-bar;
   animation-duration: 1.4s;
   animation-timing-function: cubic-bezier(0.83, 0, 0.17, 1);
+  /* easeInOutQuintのイージング */
   animation-iteration-count: infinite;
 }
 
